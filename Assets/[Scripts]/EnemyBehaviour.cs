@@ -17,11 +17,33 @@ public class EnemyBehaviour : MonoBehaviour
     public float horizontalBoundary;
     public float direction;
 
+    [Header("Bullets")]
+    public Transform bulletSpawn;
+    //public GameObject bulletprefab;
+    public int frameDelay;
+
+    private BulletManager bulletManager;
+
+
+    void Start()
+    {
+        bulletManager = GameObject.FindObjectOfType<BulletManager>();   
+    }
     // Update is called once per frame
     void Update()
     {
         _Move();
         _CheckBounds();
+    }
+
+    private void FixedUpdate()
+    {
+        if(Time.frameCount % frameDelay == 0 )
+        {
+            bulletManager.GetBullet(bulletSpawn.position);
+            //var temp_bullet = Instantiate(bulletprefab);
+            //temp_bullet.transform.position = bulletSpawn.position;
+        }
     }
 
     private void _Move()
