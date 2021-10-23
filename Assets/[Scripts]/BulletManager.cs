@@ -7,12 +7,14 @@ public class BulletManager : MonoBehaviour
 {
     public Queue<GameObject> bulletPool;
     public int bulletNumber;
-    public GameObject bulletprefab;
+    //public GameObject bulletprefab;
+    private BulletFactory factory;
 
     // Start is called before the first frame update
     void Start()
     {
-        bulletPool = new Queue<GameObject>();   
+        bulletPool = new Queue<GameObject>();
+        factory = GetComponent<BulletFactory>();
     }
 
     // Update is called once per frame
@@ -23,19 +25,30 @@ public class BulletManager : MonoBehaviour
         //returnBullet();
     }
 
+    private void AddBullet()
+    {
+        //var temp_bullet = Instantiate(bulletprefab);
+        //temp_bullet.SetActive(false);
+        //temp_bullet.transform.parent = transform;
+        var temp_bullet = factory.createBullet();
+        bulletPool.Enqueue(temp_bullet);
+    }
+
     private void BuildBulletPool()
     {
        for(int i = 0; i< bulletNumber;i++)
         {
-            var temp_bullet = Instantiate(bulletprefab);
-            temp_bullet.SetActive(false);
-            temp_bullet.transform.parent = transform;
-            bulletPool.Enqueue(temp_bullet);
+            AddBullet();
         }
     }
 
     public GameObject GetBullet(Vector2 position)
     {
+        if( bulletPool.Count < 1)
+        {
+            AddBullet();
+            bulletNumber++;
+        }
         var temp_bullet = bulletPool.Dequeue();
         temp_bullet.transform.position = position;
         temp_bullet.SetActive(true);
