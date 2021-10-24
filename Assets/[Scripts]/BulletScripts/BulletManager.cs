@@ -76,7 +76,7 @@ public class BulletManager : MonoBehaviour
                 //return temp_bullet;
                 break;
             case BulletType.PLAYER:
-                Debug.Log("add");
+                //Debug.Log("add");
                 if (playerBulletPool.Count < 1)
                 {
                     AddBullet(BulletType.PLAYER);

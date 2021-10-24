@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+//using TMPro;
+//using System;
 
 public class BulletBehaviour : MonoBehaviour
 {
@@ -15,9 +18,18 @@ public class BulletBehaviour : MonoBehaviour
     private BulletManager bulletManager;
     private Vector3 bulletVelocity;
 
+    //[SerializeField]
+    //private TextMeshPro LivesText;
+    //private TextMeshPro ScoreText;
+
+    public int Score = 0;
+    public int Lives = 3;
     // Start is called before the first frame update
     void Start()
     {
+        //LivesText.text = "Lives : 3";
+        //ScoreText.text = "Score : 0";
+
         bulletManager = GameObject.FindObjectOfType<BulletManager>();
 
         switch(direction)
@@ -45,8 +57,10 @@ public class BulletBehaviour : MonoBehaviour
 
     private void CheckBounds()
     {
+       
+
         //Check bottom
-        if(transform.position.y <bulletBounds.max)
+        if (transform.position.y < bulletBounds.max)
         {
             bulletManager.returnBullet(this.gameObject, type);
             //Destroy(this.gameObject);
@@ -59,4 +73,14 @@ public class BulletBehaviour : MonoBehaviour
             //Destroy(this.gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            Lives--;
+            Debug.Log("Lives: " + Lives);
+        }
+    }
+    
 }

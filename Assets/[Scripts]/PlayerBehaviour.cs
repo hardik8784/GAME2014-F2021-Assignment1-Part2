@@ -52,6 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
         _Move();
         _CheckBounds();
         checkFire();
+        
         //_FireBullet();
     }
 
@@ -89,18 +90,18 @@ public class PlayerBehaviour : MonoBehaviour
 
         }
 
-        //// keyboard support
-        //if (Input.GetAxis("Horizontal") >= 0.1f)
-        //{
-        //    // direction is positive
-        //    direction = 1.0f;
-        //}
+        // keyboard support
+        if (Input.GetAxis("Horizontal") >= 0.1f)
+        {
+            // direction is positive
+            direction = 1.0f;
+        }
 
-        //if (Input.GetAxis("Horizontal") <= -0.1f)
-        //{
-        //    // direction is negative
-        //    direction = -1.0f;
-        //}
+        if (Input.GetAxis("Horizontal") <= -0.1f)
+        {
+            // direction is negative
+            direction = -1.0f;
+        }
 
         if (m_touchesEnded.x != 0.0f)
         {
@@ -134,7 +135,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+           // Debug.Log("Key pressed Space");
             bulletManager.GetBullet(bulletSpawn.position, BulletType.PLAYER);
         }
     }
+
+   
 }
