@@ -5,6 +5,7 @@
  * File : EnemyController.cs
  * Description : This is the Bullet Factory Script
  * Revision History : v0.1 > Added Comments to know the Code better before start anything & to include a program header
+ *                    v0.2 > Create bullet with factory
  */
 
 
@@ -22,6 +23,11 @@ public class BulletFactory : MonoBehaviour
     public GameObject Enemybullet;
     public GameObject PlayerBullet;
 
+    /// <summary>
+    /// Create the bullet using the factory
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     public GameObject createBullet(BulletType type = BulletType.ENEMY)
     {
         GameObject temp_bullet = null;

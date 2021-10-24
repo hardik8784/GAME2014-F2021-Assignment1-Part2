@@ -5,6 +5,8 @@
  * File : PlayerController.cs
  * Description : This is the Player Behaviour Script
  * Revision History : v0.1 > Added Comments to know the Code better before start anything & to include a program header
+ *                    v0.2 > Added Movement for the player
+ *                    v0.3 > Added Bullet for the player
  */
 
 
@@ -46,7 +48,9 @@ public class PlayerBehaviour : MonoBehaviour
         m_rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update the function every frame
+    /// </summary>
     void Update()
     {
         _Move();
@@ -64,7 +68,9 @@ public class PlayerBehaviour : MonoBehaviour
     //        bulletManager.GetBullet(transform.position);
     //    }
     //}
-
+    /// <summary>
+    /// Movement for the Player using touch
+    /// </summary>
     private void _Move()
     {
         float direction = 0.0f;
@@ -90,7 +96,9 @@ public class PlayerBehaviour : MonoBehaviour
 
         }
 
-        // keyboard support
+        
+
+        //This is for the Keyboard press 
         if (Input.GetAxis("Horizontal") >= 0.1f)
         {
             // direction is positive
@@ -115,6 +123,9 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// It will check the bounds for the player so it will not go beyond the screen
+    /// </summary>
     private void _CheckBounds()
     {
         // check right bounds
@@ -131,6 +142,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Whenever player press the space then it will fire up the bullet
+    /// </summary>
     private void checkFire()
     {
         if (Input.GetKeyDown(KeyCode.Space))

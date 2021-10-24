@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2241836014302392404}
   m_Layer: 0
   m_Name: PlayerBullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,3 +102,5 @@ MonoBehaviour:
     min: 15
     max: -17
   direction: 0
+  Score: 0
+  Lives: 1

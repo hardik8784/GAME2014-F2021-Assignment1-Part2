@@ -5,6 +5,8 @@
  * File : EnemyController.cs
  * Description : This is the BulletManager Script
  * Revision History : v0.1 > Added Comments to know the Code better before start anything & to include a program header
+ *                    v0.2 > Added EnemyBulletPool & PlayerBulletPool
+ *                    v0.3 > Added Function to getthe bullet and return the bullet
  */
 
 
@@ -42,6 +44,10 @@ public class BulletManager : MonoBehaviour
         //returnBullet();
     }
 
+    /// <summary>
+    /// Adding the bullet into the Queue
+    /// </summary>
+    /// <param name="type"></param>
     private void AddBullet(BulletType type = BulletType.ENEMY)
     {
         //var temp_bullet = Instantiate(bulletprefab);
@@ -73,6 +79,12 @@ public class BulletManager : MonoBehaviour
     //    }
     //}
 
+    /// <summary>
+    /// Whenever needed, getting the bullet from the Pool.
+    /// </summary>
+    /// <param name="spawnPosition"></param>
+    /// <param name="type"></param>
+    /// <returns></returns>
     public GameObject GetBullet(Vector2 spawnPosition, BulletType type = BulletType.ENEMY)
     {
         GameObject temp_bullet = null;
@@ -116,6 +128,11 @@ public class BulletManager : MonoBehaviour
         //return temp_bullet;
     }
 
+    /// <summary>
+    /// If the bullet goes off screen, it will be return back to the Queue
+    /// </summary>
+    /// <param name="returened_bullet"></param>
+    /// <param name="type"></param>
     public void returnBullet(GameObject returened_bullet, BulletType type = BulletType.ENEMY)
     {
         returened_bullet.SetActive(false);

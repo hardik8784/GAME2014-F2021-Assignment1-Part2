@@ -5,6 +5,8 @@
  * File : EnemyController.cs
  * Description : This is the Bullet Behaviour Script
  * Revision History : v0.1 > Added Comments to know the Code better before start anything & to include a program header
+ *                    v0.2 > Added Bullet movement
+ *                    v0.3 > Added the function for the BulletManager
  */
 
 
@@ -52,18 +54,26 @@ public class BulletBehaviour : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+   /// <summary>
+   /// Update calls once per frame
+   /// </summary>
     void FixedUpdate()
     {
         Move();
         CheckBounds();
     }
 
+    /// <summary>
+    /// Movement for the bullet using the velocity
+    /// </summary>
     private void Move()
     {
         transform.position += bulletVelocity;
     }
 
+    /// <summary>
+    /// using the max and min value checking the bounds for the bullet
+    /// </summary>
     private void CheckBounds()
     {
        
