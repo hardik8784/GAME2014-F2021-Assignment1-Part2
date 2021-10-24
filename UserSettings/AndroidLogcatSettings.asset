@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "emulator-5554",
     "m_SelectedPackage": {
         "deviceId": "emulator-5554",
-        "name": "ca.georgebrown.game2014.f2021.lab2b",
-        "processId": 2924,
+        "name": "ca.hardikshah.game2014f2021assignment1part2",
+        "processId": 2899,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -48,6 +48,18 @@
             "deviceId": "emulator-5554",
             "name": "ca.georgebrown.game2014.f2021.lab2b",
             "processId": 2924,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "ca.hardikshah.game2014f2021assignment1part2",
+            "processId": 3094,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "ca.hardikshah.game2014f2021assignment1part2",
+            "processId": 2899,
             "exited": false
         }
     ],
