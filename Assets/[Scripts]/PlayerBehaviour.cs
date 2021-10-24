@@ -29,13 +29,19 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Bullet Firing")]
     public float fireDelay;
 
+    [Header("Player Attack")]
+    public Transform bulletSpawn;
+
     // Private variables
     private Rigidbody2D m_rigidBody;
     private Vector3 m_touchesEnded;
 
+    private BulletManager bulletManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        bulletManager = GameObject.FindObjectOfType<BulletManager>();
         m_touchesEnded = new Vector3();
         m_rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -45,6 +51,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         _Move();
         _CheckBounds();
+        checkFire();
         //_FireBullet();
     }
 
@@ -121,5 +128,13 @@ public class PlayerBehaviour : MonoBehaviour
             transform.position = new Vector3(-horizontalBoundary, transform.position.y, 0.0f);
         }
 
+    }
+
+    private void checkFire()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            bulletManager.GetBullet(bulletSpawn.position, BulletType.PLAYER);
+        }
     }
 }

@@ -181,3 +181,4 @@ MonoBehaviour:
   maxSpeed: 6
   horizontalTValue: 0.1
   fireDelay: 0.2
+  bulletSpawn: {fileID: 8367538968727800285}
